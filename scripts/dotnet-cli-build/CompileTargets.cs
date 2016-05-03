@@ -324,7 +324,7 @@ namespace Microsoft.DotNet.Cli.Build
             Directory.CreateDirectory(Dirs.Stage1);
 
             CopySharedHost(Dirs.Stage1);
-            PublishSharedFramework(c, Dirs.Stage1, DotNetCli.Stage0, nuGetVersion: "3.5.0-beta-1199");
+            PublishSharedFramework(c, Dirs.Stage1, DotNetCli.Stage0, nuGetVersion: "3.5.0-rc-1233");
             var result = CompileCliSdk(c,
                 dotnet: DotNetCli.Stage0,
                 outputDir: Dirs.Stage1);

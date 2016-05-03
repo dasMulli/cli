@@ -309,7 +309,7 @@ namespace Microsoft.DotNet.Tools.Builder.Tests
         }
 
         [Fact]
-        private void StandaloneApp_WithoutCoreclrDll_Fails()
+        private void StandaloneApp_WithoutCoreClrDll_Fails()
         {
             // Convert a Portable App to Standalone to simulate the customer scenario
             var testInstance = TestAssetsManager.CreateTestInstance("DependencyChangeTest")

@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System.Linq;
+using System.IO;
 using Microsoft.DotNet.Cli.CommandLine;
 using LocalizableStrings = Microsoft.DotNet.Tools.Publish.LocalizableStrings;
 
@@ -20,7 +21,7 @@ namespace Microsoft.DotNet.Cli
                     LocalizableStrings.OutputOptionDescription,
                     Accept.ExactlyOneArgument()
                         .With(name: LocalizableStrings.OutputOption)
-                        .ForwardAsSingle(o => $"/p:PublishDir={o.Arguments.Single()}")),
+                        .ForwardAsSingle(o => $"/p:PublishDir={Path.GetFullPath(o.Arguments.Single())}")),
                 CommonOptions.FrameworkOption(),
                 CommonOptions.RuntimeOption(),
                 CommonOptions.ConfigurationOption(),

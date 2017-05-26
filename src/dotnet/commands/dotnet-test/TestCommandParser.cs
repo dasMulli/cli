@@ -1,5 +1,9 @@
+// Copyright (c) .NET Foundation and contributors. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using Microsoft.DotNet.Cli.CommandLine;
 using LocalizableStrings = Microsoft.DotNet.Tools.Test.LocalizableStrings;
 
@@ -57,7 +61,7 @@ namespace Microsoft.DotNet.Cli
                         LocalizableStrings.CmdOutputDescription,
                         Accept.ExactlyOneArgument()
                               .With(name: LocalizableStrings.CmdOutputDir)
-                              .ForwardAsSingle(o => $"/p:OutputPath={o.Arguments.Single()}")),
+                              .ForwardAsSingle(o => $"/p:OutputPath={Path.GetFullPath(o.Arguments.Single())}")),
                   Create.Option(
                         "-d|--diag",
                         LocalizableStrings.CmdPathTologFileDescription,

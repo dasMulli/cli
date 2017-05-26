@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System.Linq;
+using System.IO;
 using Microsoft.DotNet.Cli.CommandLine;
 using LocalizableStrings = Microsoft.DotNet.Tools.Pack.LocalizableStrings;
 
@@ -20,7 +21,7 @@ namespace Microsoft.DotNet.Cli
                     LocalizableStrings.CmdOutputDirDescription,
                     Accept.ExactlyOneArgument()
                         .With(name: LocalizableStrings.CmdOutputDir)
-                        .ForwardAsSingle(o => $"/p:PackageOutputPath={o.Arguments.Single()}")),
+                        .ForwardAsSingle(o => $"/p:PackageOutputPath={Path.GetFullPath(o.Arguments.Single())}")),
                 Create.Option(
                     "--no-build",
                     LocalizableStrings.CmdNoBuildOptionDescription,

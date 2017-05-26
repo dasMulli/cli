@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System.Linq;
+using System.IO;
 using Microsoft.DotNet.Cli.CommandLine;
 using LocalizableStrings = Microsoft.DotNet.Tools.Clean.LocalizableStrings;
 
@@ -19,7 +20,7 @@ namespace Microsoft.DotNet.Cli
                               LocalizableStrings.CmdOutputDirDescription,
                                          Accept.ExactlyOneArgument()
                         .With(name: LocalizableStrings.CmdOutputDir)
-                        .ForwardAsSingle(o => $"/p:OutputPath={o.Arguments.Single()}")),
+                        .ForwardAsSingle(o => $"/p:OutputPath={Path.GetFullPath(o.Arguments.Single())}")),
                 CommonOptions.FrameworkOption(),
                 CommonOptions.ConfigurationOption(),
                 CommonOptions.VerbosityOption());
